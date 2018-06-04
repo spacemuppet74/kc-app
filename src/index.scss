@@ -1,0 +1,20 @@
+/* need to set all the above div to have height 100% so
+    we can take all the page
+*/
+
+body,
+html,
+#s4-bodyContainer,
+#contentRow,
+#contentBox,
+#DeltaPlaceHolderMain,
+div[data-name="WebPartZone"],
+div[data-name="WebPartZone"] > div,
+.ms-webpart-zone.ms-fullWidth,
+.s4-wpcell-plain.ms-webpartzone-cell.ms-webpart-cell-vertical.ms-fullWidth,
+.ms-webpart-chrome.ms-webpart-chrome-vertical.ms-webpart-chrome-fullWidth,
+.ms-WPBody.noindex,
+.ms-rtestate-field,
+#root {
+  height: 100%;
+}

@@ -1,17 +1,28 @@
-import React, { Component } from 'react';
-import { Header, Icon } from 'semantic-ui-react'
+import React, { Component, Fragment } from "react";
+import { Switch, Route } from "react-router-dom";
 
-import './app.scss'
+import Home from "../../features/home/Home";
+import TestArea from "../../features/testarea/TestArea";
 
 class App extends Component {
-  state = {}
+  state = {};
   render() {
     return (
-      <div className="app">
-        <Header as="h1" content="React App" />
-        <Icon name="smile" />
-      </div>)
+      <Fragment>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route
+            path="(.+)"
+            render={() => (
+              <Switch>
+                <Route path="/test" component={TestArea} />
+              </Switch>
+            )}
+          />
+        </Switch>
+      </Fragment>
+    );
   }
 }
 
-export default App
+export default App;
