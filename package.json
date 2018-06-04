@@ -26,6 +26,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
+    "redux-devtools-extension": "^2.13.2",
     "sass-loader": "^7.0.2",
     "style-loader": "^0.21.0",
     "webpack": "^4.10.2",
@@ -36,7 +37,12 @@
     "babel-polyfill": "^6.26.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.81.1"
+    "semantic-ui-react": "^0.81.1",
+    "whatwg-fetch": "^2.0.4"
   }
 }
