@@ -26,9 +26,9 @@ class Layout extends Component {
             <Icon name="home" />
             {site}
           </Menu.Item>
-          <Menu.Item name="gamepad">
+          <Menu.Item name="gamepad" as={Link} to="/test">
             <Icon name="gamepad" />
-            Games
+            Test
           </Menu.Item>
           <Menu.Item name="camera">
             <Icon name="camera" />
