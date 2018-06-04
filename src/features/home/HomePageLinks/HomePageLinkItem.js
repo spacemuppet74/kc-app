@@ -1,7 +1,21 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-const HomePageLinkItem = () => {
-  return <div className="Home-Page-Link">Auckland</div>;
+import "./HomePageLinkItem.scss";
+
+const HomePageLinkItem = ({ site }) => {
+  return (
+    <Link to={`/${site.Title}`}>
+      <div className="Home-Page-Link">{site.Title}</div>
+    </Link>
+  );
 };
 
-export default HomePageLinkItem;
+const mapState = (state, ownProps) => {
+  return {
+    site: state.hubSites.byIds[ownProps.siteID]
+  };
+};
+
+export default connect(mapState)(HomePageLinkItem);

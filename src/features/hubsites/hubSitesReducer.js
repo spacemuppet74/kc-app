@@ -4,7 +4,7 @@ import {
   FETCH_HUBS_SITES_SUCCESS,
   FETCH_HUBS_SITES_REQUEST,
   UPDATE_SELECTED_SITE
-} from "./sitesConstants";
+} from "./hubSitesConstants";
 
 const initialState = {
   loading: false,
@@ -14,7 +14,7 @@ const initialState = {
   error: {}
 };
 
-const fetchHubSitesRequest = (state) => {
+const fetchHubSitesRequest = state => {
   return {
     ...state,
     loading: true
@@ -56,5 +56,4 @@ export default createReducer(initialState, {
   [FETCH_HUBS_SITES_SUCCESS]: fetchHubSiteSuccess,
   [FETCH_HUBS_SITES_ERROR]: fetchHubSitesError,
   [UPDATE_SELECTED_SITE]: updateSelectedSite
-
 });

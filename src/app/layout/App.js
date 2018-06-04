@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "../../features/home/Home";
+import Layout from "./Layout";
 import TestArea from "../../features/testarea/TestArea";
+import CardsDashboard from "../../features/cards/CardsDashboard/CardsDashboard";
+import Card from "../../features/cards/Card/Card";
 
 class App extends Component {
   state = {};
@@ -10,15 +13,32 @@ class App extends Component {
     return (
       <Fragment>
         <Switch>
-          <Route exact path="/" component={Home} />
           <Route
-            path="(.+)"
+            exact
+            path="/test"
             render={() => (
-              <Switch>
-                <Route path="/test" component={TestArea} />
-              </Switch>
+              <Layout>
+                <TestArea />
+              </Layout>
             )}
           />
+          <Route
+            path="/:site/card"
+            render={() => (
+              <Layout>
+                <Card />
+              </Layout>
+            )}
+          />
+          <Route
+            path="/:site"
+            render={() => (
+              <Layout>
+                <CardsDashboard />
+              </Layout>
+            )}
+          />
+          <Route exact path="*" component={Home} />
         </Switch>
       </Fragment>
     );

@@ -3,9 +3,9 @@ import {
   FETCH_HUBS_SITES_SUCCESS,
   FETCH_HUBS_SITES_REQUEST,
   UPDATE_SELECTED_SITE
-} from "./sitesConstants";
+} from "./hubSitesConstants";
 
-import { getHubsSites } from './sites-api'
+import { getHubsSites } from "./hubSites-api";
 
 const fetchHubSitesRequest = () => {
   return {
@@ -43,12 +43,12 @@ export const updateSelectedSite = site => {
 export const fetchHubSites = () => {
   return async dispatch => {
     try {
-      dispatch(fetchHubSitesRequest())
-      const hubSites = await getHubsSites()
-      dispatch(fetchHubSitesSuccess(hubSites))
+      dispatch(fetchHubSitesRequest());
+      const hubSites = await getHubsSites();
+      dispatch(fetchHubSitesSuccess(hubSites));
     } catch (error) {
-      console.log(error)
-      dispatch(fetchHubSitesError(error))
+      console.log(error);
+      dispatch(fetchHubSitesError(error));
     }
-  }
-}
+  };
+};

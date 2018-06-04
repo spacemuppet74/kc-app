@@ -1,0 +1,17 @@
+.Home-Page-Link {
+  width: 150px;
+  padding: 1rem 0.8rem;
+  border: 1px solid white;
+  border-radius: 0.3rem;
+  margin: 0 0.4rem 0.8rem 0.4rem;
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.Home-Page-Link:hover {
+  background: rgb(240, 232, 232);
+  border: 1px solid rgb(207, 197, 197);
+  color: #3d27af;
+  box-shadow: 4px 4px 48px #ccc;
+}

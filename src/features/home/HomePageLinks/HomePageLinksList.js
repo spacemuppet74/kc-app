@@ -1,12 +1,21 @@
 import React from "react";
+import { connect } from "react-redux";
 import HomePageLinkItem from "./HomePageLinkItem";
 
-const HomePageLinkList = () => {
+import "./HomePageLinksList.scss";
+
+const HomePageLinkList = ({ sites }) => {
   return (
     <div className="Home-Page-Links">
-      <HomePageLinkItem />
+      {sites.map(site => <HomePageLinkItem siteID={site} key={site} />)}
     </div>
   );
 };
 
-export default HomePageLinkList;
+const mapState = state => {
+  return {
+    sites: state.hubSites.listing
+  };
+};
+
+export default connect(mapState)(HomePageLinkList);
