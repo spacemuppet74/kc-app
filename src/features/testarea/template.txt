@@ -1,0 +1,24 @@
+<List>
+          {
+            categories.map((category, index) => (
+              <List.Item {...getItemProps({ key: category, item: category, index })}>
+                <List.Icon name='folder' />
+                <List.Content>
+                  <List.Header>{category}</List.Header>
+                  <List.Description>Source files for project</List.Description>
+                  <List.List>
+                    {
+                      items[category].results.map((product, index) => (
+                        <List.Item {...getItemProps({ key: product.itemDESC, item: product, index })}>
+                          <List.Icon name='folder' />
+                          <List.Content>
+                            <List.Header>{product.itemTitle}</List.Header>
+                            <List.Description>{product.itemDESC}</List.Description>
+                            <List.Description>{product.UOMDescription}</List.Description>
+                          </List.Content>
+                        </List.Item>
+                      ))
+                    }
+                  </List.List>
+                </List.Content>
+              </List.Item>

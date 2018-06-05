@@ -90,3 +90,40 @@ export const getGPItemsSelector = createSelector(
     return res;
   }
 );
+
+export const gpItemsTree = createSelector(
+  gpItems,
+  (items) => {
+    const listing = Object.values(items)
+    const res = listing.reduce((prev, next) => {
+      let uofm = next.UOFM.trim().toLowerCase();
+
+      if (prev[uofm]) {
+        prev[uofm].results = [
+          ...prev[uofm].results,
+          {
+            title: next.ItemCode.trim(),
+            description: next.ITEMDESC.trim(),
+            description1: next.UOMDescription.trim(),
+            itemcode: next.ID.trim()
+          }
+        ];
+      } else {
+        prev[uofm] = {
+          name: uofm,
+          results: [
+            {
+              title: next.ItemCode.trim(),
+              description: next.ITEMDESC.trim(),
+              description1: next.UOMDescription.trim(),
+              itemcode: next.ID.trim()
+            }
+          ]
+        };
+      }
+
+      return { ...prev };
+    }, {});
+    return res;
+  }
+)
