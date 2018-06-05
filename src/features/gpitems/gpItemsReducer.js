@@ -91,39 +91,44 @@ export const getGPItemsSelector = createSelector(
   }
 );
 
-export const gpItemsTree = createSelector(
-  gpItems,
-  (items) => {
-    const listing = Object.values(items)
-    const res = listing.reduce((prev, next) => {
-      let uofm = next.UOFM.trim().toLowerCase();
+export const gpItemsTree = createSelector(gpItems, items => {
+  const listing = Object.values(items);
+  const res = listing.reduce((prev, next) => {
+    let uofm = next.UOFM.trim().toLowerCase();
 
-      if (prev[uofm]) {
-        prev[uofm].results = [
-          ...prev[uofm].results,
+    if (prev[uofm]) {
+      prev[uofm].results = [
+        ...prev[uofm].results,
+        {
+          ...next,
+          ItemCode: next.ItemCode.trim(),
+          ITEMDESC: next.ITEMDESC.trim(),
+          ManufacutureID: next.ManufacutureID.trim(),
+          UOMScheduleID: next.UOMScheduleID.trim(),
+          UOMDescription: next.UOMDescription.trim(),
+          UOFM: next.UOFM.trim(),
+          EquivalendUOFM: next.EquivalendUOFM.trim()
+        }
+      ];
+    } else {
+      prev[uofm] = {
+        name: uofm,
+        results: [
           {
-            title: next.ItemCode.trim(),
-            description: next.ITEMDESC.trim(),
-            description1: next.UOMDescription.trim(),
-            itemcode: next.ID.trim()
+            ...next,
+            ItemCode: next.ItemCode.trim(),
+            ITEMDESC: next.ITEMDESC.trim(),
+            ManufacutureID: next.ManufacutureID.trim(),
+            UOMScheduleID: next.UOMScheduleID.trim(),
+            UOMDescription: next.UOMDescription.trim(),
+            UOFM: next.UOFM.trim(),
+            EquivalendUOFM: next.EquivalendUOFM.trim()
           }
-        ];
-      } else {
-        prev[uofm] = {
-          name: uofm,
-          results: [
-            {
-              title: next.ItemCode.trim(),
-              description: next.ITEMDESC.trim(),
-              description1: next.UOMDescription.trim(),
-              itemcode: next.ID.trim()
-            }
-          ]
-        };
-      }
+        ]
+      };
+    }
 
-      return { ...prev };
-    }, {});
-    return res;
-  }
-)
+    return { ...prev };
+  }, {});
+  return res;
+});
