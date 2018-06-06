@@ -20,7 +20,7 @@ const miniCSSExtractPlugin = new MiniCssExtractPlugin({
 module.exports = {
   devtool: "source-map",
   entry: {
-    bundle: ['babel-polyfill', './src/index.js']
+    bundle: ["whatwg-fetch", 'babel-polyfill', './src/index.js']
   },
   output: {
     filename: "bundle.js",

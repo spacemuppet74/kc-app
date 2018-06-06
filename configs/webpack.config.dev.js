@@ -17,7 +17,7 @@ const miniCSSExtractPlugin = new MiniCssExtractPlugin({
 module.exports = {
   devtool: "cheap-module-eval-source-map",
   entry: {
-    bundle: ['babel-polyfill', './src/index.js']
+    bundle: ["whatwg-fetch", 'babel-polyfill', './src/index.js']
   },
   output: {
     filename: "bundle.js",

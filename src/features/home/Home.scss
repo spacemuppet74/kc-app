@@ -1,6 +1,7 @@
 .Home-Page {
   background: linear-gradient(45deg, #4118b3, #18ad8d);
   height: 100%;
+  min-height: 91vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -11,7 +12,7 @@
   width: 75%;
 }
 
-.Home-Page-App > h1 {
+.Home-Page-App>h1 {
   font-size: 3rem;
   font-weight: normal;
   color: white;

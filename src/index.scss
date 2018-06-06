@@ -9,7 +9,7 @@ html,
 #contentBox,
 #DeltaPlaceHolderMain,
 div[data-name="WebPartZone"],
-div[data-name="WebPartZone"] > div,
+div[data-name="WebPartZone"]>div,
 .ms-webpart-zone.ms-fullWidth,
 .s4-wpcell-plain.ms-webpartzone-cell.ms-webpart-cell-vertical.ms-fullWidth,
 .ms-webpart-chrome.ms-webpart-chrome-vertical.ms-webpart-chrome-fullWidth,
@@ -17,4 +17,5 @@ div[data-name="WebPartZone"] > div,
 .ms-rtestate-field,
 #root {
   height: 100%;
+  min-height: 91vh;
 }
