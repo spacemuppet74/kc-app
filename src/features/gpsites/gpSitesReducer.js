@@ -1,4 +1,5 @@
 import { createReducer } from "../../app/util/reducerUtil"
+import { createSelector } from 'reselect'
 
 import { FETCH_GP_SITES_REQUEST, FETCH_GP_SITES_SUCCESS, FETCH_GP_SITES_ERROR } from './gpSitesConstants';
 
@@ -44,3 +45,10 @@ export default createReducer(initialState, {
   [FETCH_GP_SITES_SUCCESS]: fetchGPSiteSuccess,
   [FETCH_GP_SITES_ERROR]: fetchGPSiteError
 })
+
+const gpSites = state => state.gpSites.byIds
+
+export const selectGPSitesOptions = createSelector(
+  gpSites,
+  (gpSites) => Object.values(gpSites).filter(site => site.ADDRESS1.trim() !== "").map(site => ({ key: site.LOCNCODE.trim(), value: site.LOCNCODE.trim(), text: site.LOCNDSCR.trim() }))
+)

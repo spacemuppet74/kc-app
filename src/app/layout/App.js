@@ -5,7 +5,7 @@ import Home from "../../features/home/Home";
 import Layout from "./Layout";
 import TestArea from "../../features/testarea/TestArea";
 import CardsDashboard from "../../features/cards/CardsDashboard/CardsDashboard";
-import Card from "../../features/cards/Card/Card";
+import CardForm from "../../features/cards/CardForm/CardForm";
 
 class App extends Component {
   state = {};
@@ -26,7 +26,7 @@ class App extends Component {
             path="/:site/card"
             render={() => (
               <Layout>
-                <Card />
+                <CardForm />
               </Layout>
             )}
           />

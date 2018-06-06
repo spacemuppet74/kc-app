@@ -1,10 +1,13 @@
 import { createReducer } from "../../app/util/reducerUtil";
+import { createSelector } from 'reselect'
+
 import {
   FETCH_HUBS_SITES_ERROR,
   FETCH_HUBS_SITES_SUCCESS,
   FETCH_HUBS_SITES_REQUEST,
   UPDATE_SELECTED_SITE
 } from "./hubSitesConstants";
+
 
 const initialState = {
   loading: false,
@@ -57,3 +60,12 @@ export default createReducer(initialState, {
   [FETCH_HUBS_SITES_ERROR]: fetchHubSitesError,
   [UPDATE_SELECTED_SITE]: updateSelectedSite
 });
+
+
+const hubSitesOptions = (state) => state.hubSites.byIds
+
+export const selectHubSites = createSelector(
+  hubSitesOptions,
+  (sites) => Object.values(sites).map(site => ({ key: site.Id, value: site.Id, text: site.Title }))
+)
+

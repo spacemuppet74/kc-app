@@ -100,14 +100,9 @@ export const gpItemsTree = createSelector(gpItems, items => {
       prev[uofm].results = [
         ...prev[uofm].results,
         {
-          ...next,
-          ItemCode: next.ItemCode.trim(),
-          ITEMDESC: next.ITEMDESC.trim(),
-          ManufacutureID: next.ManufacutureID.trim(),
-          UOMScheduleID: next.UOMScheduleID.trim(),
-          UOMDescription: next.UOMDescription.trim(),
-          UOFM: next.UOFM.trim(),
-          EquivalendUOFM: next.EquivalendUOFM.trim()
+          title: next.ItemCode.trim(),
+          description: next.ITEMDESC.trim(),
+          itemcode: next.ID
         }
       ];
     } else {
@@ -115,14 +110,9 @@ export const gpItemsTree = createSelector(gpItems, items => {
         name: uofm,
         results: [
           {
-            ...next,
-            ItemCode: next.ItemCode.trim(),
-            ITEMDESC: next.ITEMDESC.trim(),
-            ManufacutureID: next.ManufacutureID.trim(),
-            UOMScheduleID: next.UOMScheduleID.trim(),
-            UOMDescription: next.UOMDescription.trim(),
-            UOFM: next.UOFM.trim(),
-            EquivalendUOFM: next.EquivalendUOFM.trim()
+            title: next.ItemCode.trim(),
+            description: next.UOMDescription.trim(),
+            itemcode: next.ID
           }
         ]
       };
