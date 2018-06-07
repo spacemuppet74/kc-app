@@ -6,6 +6,7 @@ import configureStore from "./app/store/configureStore";
 import { fetchHubSites } from "./features/hubsites/hubSitesActions";
 import { fetchGPSites } from "./features/gpsites/gpSitesActions";
 import { fetchGPItems } from "./features/gpitems/gpItemsActions";
+import { fetchStoresLocations } from './features/storelocations/storeLocationsActions'
 import "semantic-ui-css/semantic.min.css";
 import "./index.scss";
 
@@ -17,6 +18,8 @@ store.dispatch(fetchHubSites());
 store.dispatch(fetchGPSites());
 // fetch GP Items
 store.dispatch(fetchGPItems());
+// fetch Stores locations
+store.dispatch(fetchStoresLocations())
 
 const el = document.getElementById("root");
 

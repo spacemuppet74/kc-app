@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Label, Image } from 'semantic-ui-react'
 
+import { uploadImage } from '../../../features/cards/card-api'
+
 class ImageUpload extends Component {
   state = {
     image: null
@@ -16,6 +18,7 @@ class ImageUpload extends Component {
       // so that we can read the content of the file
       var reader = new FileReader()
       reader.fileName = imageFile.name
+      reader.size = imageFile.size
 
       // once the file has been read by the browser
       // then we need to do 
@@ -24,11 +27,17 @@ class ImageUpload extends Component {
         const image = {
           name: upload.target.fileName,
           file: upload.target.result,
-          src: src
+          src: src,
+          size: upload.target.size,
+          testFile: imageFile
         }
 
+        console.log(upload.target)
+
         this.setState({ image })
+
         this.props.input.onChange(image)
+        uploadImage(image)
       }
       console.log('read file from ArrayBuffer')
       reader.readAsArrayBuffer(evt.target.files[0])

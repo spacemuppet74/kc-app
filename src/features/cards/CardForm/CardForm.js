@@ -15,6 +15,9 @@ import GPItemDetails from '../../gpitems/GPItemDetails'
 import { gpItemsTree } from '../../gpitems/gpItemsReducer'
 import { selectGPSitesOptions } from '../../gpsites/gpSitesReducer'
 import { selectHubSites } from '../../hubsites/hubSitesReducer'
+import { selectorStoesOptions } from '../../storelocations/storeLocationsReducer'
+
+import { submitNewCard } from '../card-api'
 
 class CardForm extends Component {
 
@@ -65,6 +68,7 @@ class CardForm extends Component {
 
   handleSubmit = (values) => {
     console.log('form submitted ', values)
+    submitNewCard(values)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -82,7 +86,7 @@ class CardForm extends Component {
 
   render() {
     const { searchingGPItems, items, term } = this.state
-    const { gpSitesOptions } = this.props
+    const { gpSitesOptions, storesOptions } = this.props
     console.log('Form Store - GP Items ', this.props.gpItemValue)
     return (
       <Form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
@@ -103,17 +107,19 @@ class CardForm extends Component {
               name="storeSite"
               component={SelectInput}
               type="text"
-              label="Store Location"
+              label="Location"
               placeholder="Enter location"
               options={gpSitesOptions}
               search={true}
             />
             <Field
               name="locationOfItem"
-              component={TextInput}
+              component={SelectInput}
               type="text"
               label="Location of Item"
               placeholder="Enter location of Item"
+              options={storesOptions}
+              search={true}
             />
             <Field
               name="cardlocation"
@@ -190,7 +196,8 @@ const mapState = state => {
     items: gpItemsTree(state),
     selectedGPItem: selectedGPItem(state),
     gpItemValue: gpItemValues(state),
-    gpSitesOptions: selectGPSitesOptions(state)
+    gpSitesOptions: selectGPSitesOptions(state),
+    storesOptions: selectorStoesOptions(state)
   }
 }
 

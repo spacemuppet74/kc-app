@@ -23,8 +23,9 @@ module.exports = {
     bundle: ["whatwg-fetch", 'babel-polyfill', './src/index.js']
   },
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "..", 'dist')
+    filename: "bundle.[chunkhash:4].js",
+    path: path.resolve(__dirname, "..", 'dist'),
+    publicPath: "/apps/nzbs_applications/kanban_cards/"
   },
   module: {
     rules: [
@@ -51,7 +52,9 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: './bobthebuilder/[name].[ext]'
+              name: '[name].[ext]',
+              outputPath: 'styles/fonts/',
+              publicPath: './fonts'
             }
           }
         ]

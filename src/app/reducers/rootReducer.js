@@ -6,13 +6,15 @@ import testReducer from "../../features/testarea/testReducer";
 import hubSitesReducer from "../../features/hubsites/hubSitesReducer";
 import gpSitesReducer from "../../features/gpsites/gpSitesReducer";
 import gpItemsReducer from "../../features/gpitems/gpItemsReducer";
+import storesReducer from '../../features/storelocations/storeLocationsReducer'
 
 const rootReducer = combineReducers({
   test: testReducer,
   form: formReducer,
   hubSites: hubSitesReducer,
   gpItems: gpItemsReducer,
-  gpSites: gpSitesReducer
+  gpSites: gpSitesReducer,
+  stores: storesReducer
 });
 
 export default rootReducer;

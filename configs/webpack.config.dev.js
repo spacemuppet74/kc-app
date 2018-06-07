@@ -48,7 +48,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: './bobthebuilder/[name].[ext]'
+              name: './styles/[name].[ext]'
             }
           }
         ]
