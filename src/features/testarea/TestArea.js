@@ -10,12 +10,13 @@ import {
   Form,
   List
 } from "semantic-ui-react";
-import { gpItemsTree } from "../gpitems/gpItemsReducer";
+
 import "./TestArea.scss";
 
 import Time from "./Time";
+import TestForm from './TestForm'
+import ImageUploader from '../../app/common/form/ImageUploader'
 
-import _ from 'lodash'
 
 class TestArea extends Component {
 
@@ -31,16 +32,14 @@ class TestArea extends Component {
         <Time
           render={({ time }) => <h1>Time is {time.toLocaleString()} </h1>}
         />
+        <TestForm />
       </div>
     );
   }
 }
 
 const mapState = state => {
-  return {
-    loadingGP: state.gpItems.loading,
-    items: gpItemsTree(state)
-  };
+  return {}
 };
 
 const actions = {};

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from 'react-redux'
+import _ from 'lodash'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { createSelector } from 'reselect'
 import { Grid, Form, List, Card, Button } from "semantic-ui-react";
@@ -7,6 +8,8 @@ import { Grid, Form, List, Card, Button } from "semantic-ui-react";
 import GPItemAutoComplete from '../../../app/common/form/GPItemAutoComplete'
 import TextInput from '../../../app/common/form/TextInput'
 import SelectInput from '../../../app/common/form/SelectInput'
+import ImageUploader from '../../../app/common/form/ImageUploader'
+
 import GPItemDetails from '../../gpitems/GPItemDetails'
 
 import { gpItemsTree } from '../../gpitems/gpItemsReducer'
@@ -139,6 +142,17 @@ class CardForm extends Component {
               type="number"
               label="Maxmimum On Shelf"
               placeholder="Maxmimum On Shelf"
+            />
+            <Field
+              name="image"
+              type="file"
+              label="Upload Product Image"
+              placeholder="upload image"
+              component={ImageUploader}
+              abel="Upload Image"
+              width={6}
+              bordered={true}
+              size="medium"
             />
 
           </Grid.Column>
