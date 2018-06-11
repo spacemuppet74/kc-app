@@ -5,6 +5,7 @@ import { FETCH_GP_SITES_REQUEST, FETCH_GP_SITES_SUCCESS, FETCH_GP_SITES_ERROR } 
 
 const initialState = {
   loading: false,
+  loaded: false,
   byIds: {},
   listing: [],
   error: null
@@ -28,6 +29,7 @@ const fetchGPSiteSuccess = (state, payload) => {
     ...state,
     byIds: { ...byIds },
     listing: [...listing],
+    loaded: true,
     loading: false
   }
 }

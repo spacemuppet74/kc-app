@@ -14,8 +14,8 @@ import GPItemDetails from '../../gpitems/GPItemDetails'
 
 import { gpItemsTree } from '../../gpitems/gpItemsReducer'
 import { selectGPSitesOptions } from '../../gpsites/gpSitesReducer'
-import { selectHubSites } from '../../hubsites/hubSitesReducer'
 import { selectorStoesOptions } from '../../storelocations/storeLocationsReducer'
+import {submitFormRequest} from '../cardsActions'
 
 import { submitNewCard } from '../card-api'
 
@@ -68,7 +68,7 @@ class CardForm extends Component {
 
   handleSubmit = (values) => {
     console.log('form submitted ', values)
-    submitNewCard(values)
+    this.props.submitFormRequest(values)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -201,6 +201,10 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(
+const actions = {
+  submitFormRequest
+}
+
+export default connect(mapState, actions)(
   reduxForm({ form: 'card' })(CardForm)
 )

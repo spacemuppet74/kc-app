@@ -7,6 +7,7 @@ import hubSitesReducer from "../../features/hubsites/hubSitesReducer";
 import gpSitesReducer from "../../features/gpsites/gpSitesReducer";
 import gpItemsReducer from "../../features/gpitems/gpItemsReducer";
 import storesReducer from '../../features/storelocations/storeLocationsReducer'
+import cardsReducer from '../../features/cards/cardsReducer'
 
 const rootReducer = combineReducers({
   test: testReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   hubSites: hubSitesReducer,
   gpItems: gpItemsReducer,
   gpSites: gpSitesReducer,
-  stores: storesReducer
+  stores: storesReducer,
+  cards: cardsReducer
 });
 
 export default rootReducer;

@@ -9,6 +9,7 @@ import {
 
 const initialState = {
   loading: false,
+  loaded: false,
   byIds: {},
   listing: [],
   error: null
@@ -34,6 +35,7 @@ const fetchGPItemsSuccess = (state, payload) => {
   return {
     ...state,
     loading: false,
+    loaded: true,
     byIds: { ...byIds },
     listing: [...listing]
   };
@@ -54,6 +56,7 @@ export default createReducer(initialState, {
 
 export const gpListing = state => state.gpItems.listing;
 export const gpItems = state => state.gpItems.byIds;
+export const selectorGPItemsLoading = state => state.gpItems.loading
 
 export const getGPItemsSelector = createSelector(
   gpListing,
@@ -122,3 +125,4 @@ export const gpItemsTree = createSelector(gpItems, items => {
   }, {});
   return res;
 });
+

@@ -11,6 +11,7 @@ import {
 
 const initialState = {
   loading: false,
+  loaded: false,
   byIds: {},
   listing: [],
   selectedSite: "",
@@ -34,6 +35,7 @@ const fetchHubSiteSuccess = (state, payload) => {
   return {
     ...state,
     loading: false,
+    loaded: true,
     byIds: { ...byIds },
     listing: [...listing]
   };
@@ -48,9 +50,12 @@ const fetchHubSitesError = (state, payload) => {
 };
 
 const updateSelectedSite = (state, payload) => {
+  const siteID = state.listing.find(key => state.byIds[key].Title === payload.site)
+  const site =  { ...state.byIds[siteID]}
+  
   return {
     ...state,
-    selectedSite: payload.site
+    selectedSite: site
   };
 };
 
@@ -62,10 +67,17 @@ export default createReducer(initialState, {
 });
 
 
-const hubSitesOptions = (state) => state.hubSites.byIds
+const selectorHubSite = (state) => state.hubSites.selectedSite
 
-export const selectHubSites = createSelector(
-  hubSitesOptions,
-  (sites) => Object.values(sites).map(site => ({ key: site.Id, value: site.Id, text: site.Title }))
+const hubSitesLoading = state => state.hubSites.loading
+
+export const selectorHubSitesLoading = createSelector(
+  [hubSitesLoading],
+  (getLoading) => getLoading
+)
+
+export const selectorSelectedHubSite = createSelector(
+  [selectorHubSite],
+  (selectedHubSite) => selectedHubSite
 )
 

@@ -6,7 +6,7 @@ import "./HomePageLinkItem.scss";
 
 const HomePageLinkItem = ({ site }) => {
   return (
-    <Link to={`/${site.Title}`}>
+    <Link to={{ pathname: `/${site.Title}` }}>
       <div className="Home-Page-Link">{site.Title}</div>
     </Link>
   );
