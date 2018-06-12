@@ -9,9 +9,10 @@ class CardsList extends Component {
   render() {
       const {list} = this.props
     return (
-      <Table selectable celled>
+      <Table celled>
           <Table.Header>
             <Table.Row>
+                <Table.HeaderCell></Table.HeaderCell>
                 <Table.HeaderCell>GP Number</Table.HeaderCell>
                 <Table.HeaderCell>Vendor Number</Table.HeaderCell>
                 <Table.HeaderCell>Description</Table.HeaderCell>
@@ -19,7 +20,12 @@ class CardsList extends Component {
             </Table.Row>
             </Table.Header>
             <Table.Body>
-                {list.map(key => <CardsListItem key={key} cardID={key} />)}
+                { list.length > 0 ? list.map(key => <CardsListItem key={key} cardID={key} />) : (
+                    <Table.Row>
+                        <Table.Cell colSpan={5}>No Data to display</Table.Cell>
+                        </Table.Row>
+                )  }
+                
             </Table.Body>
           </Table>
     )

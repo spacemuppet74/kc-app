@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import {Grid} from 'semantic-ui-react'
-
+import {connect} from 'react-redux'
 
 import CardsList from '../CardsList/CardsList'
+import Card from '../Card/Card'
 
 class CardsDashboard extends Component {
   state = {};
@@ -12,10 +13,18 @@ class CardsDashboard extends Component {
         <Grid.Column width={8}>
           <CardsList />
         </Grid.Column>
-        <Grid.Column width={8}>Selected Card</Grid.Column>
+        <Grid.Column width={8}>
+         {this.props.card && <Card />}
+        </Grid.Column>
         </Grid>
     )
   }
 }
 
-export default CardsDashboard;
+const mapState = state => {
+  return {
+    card: state.cards.selectedCard
+  }
+}
+
+export default connect(mapState)(CardsDashboard);

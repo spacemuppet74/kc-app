@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import {Message} from 'semantic-ui-react'
 
 import Home from "../../features/home/Home";
 import Layout from "./Layout";
@@ -39,7 +40,7 @@ class App extends Component {
             )}
           />
           <Route exact path="*" component={Home} />
-        </Switch>
+        </Switch>       
       </Fragment>
     );
   }

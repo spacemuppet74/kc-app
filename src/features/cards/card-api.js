@@ -27,7 +27,7 @@ export const submitNewCard = async (card, site) => {
     // if the image size is less than 10mb do a direct upload
     // otherwise upload in chunks
     if(image && image.size > 0 ) {
-      imageUpload = await uploadImage(image)
+      imageUpload = await uploadImage(image, itemcode)
     }
     
     console.log('image upload',imageUpload)
@@ -41,7 +41,7 @@ export const submitNewCard = async (card, site) => {
 
 }
 
-export const uploadImage = (image) => {
+export const uploadImage = (image, itemcode) => {
   console.log('upload image ', image)
   // next upload the image
   // if the image size is less than 10mb do a direct upload

@@ -1,5 +1,6 @@
 import {createReducer} from '../../app/util/reducerUtil'
-import {SUBMIT_NEW_CARD, SUBMIT_NEW_CARD_SUCCESS, SUBMIT_NEW_CARD_ERROR, FETCH_CARDS_ERROR,FETCH_CARDS_REQUEST,FETCH_CARDS_SUCESS} from './cardsConstants'
+import { createSelector } from 'reselect'
+import {SUBMIT_NEW_CARD, SUBMIT_NEW_CARD_SUCCESS, SUBMIT_NEW_CARD_ERROR, FETCH_CARDS_ERROR,FETCH_CARDS_REQUEST,FETCH_CARDS_SUCESS,SELECT_CARD} from './cardsConstants'
 
 const initialState = {
     submitting: false,
@@ -9,6 +10,7 @@ const initialState = {
     loaded: false,
     loading: false,
     error: null,
+    selectedCard: null
 }
 
 const submitNewCard = (state,payload) => {
@@ -44,7 +46,7 @@ const fetchCards = (state) => {
 
 const fetchCardsSuccess = (state, payload) => {
     const byIds = payload.cards.reduce((prev, next)=> {
-        return { ...prev, [next.Id]: next}
+        return { ...prev, [next.Id]: {...next}}
     }, {})
 
     const listing = Object.keys(byIds)
@@ -66,11 +68,54 @@ const fetchCardError = (state, payload) => {
     }
 }
 
+const selectCard = (state, payload) => {
+    const cardId = parseInt(payload.cardID, 10)
+    let selectedCard
+    if(state.selectedCard === cardId) {
+        selectedCard = null
+    } else {
+        selectedCard = cardId
+    }
+
+    return {
+        ...state,
+        selectedCard
+    }
+}
+
 export default createReducer(initialState, {
     [SUBMIT_NEW_CARD]: submitNewCard,
     [SUBMIT_NEW_CARD_SUCCESS]: submitNewCardSuccess,
     [SUBMIT_NEW_CARD_ERROR]: submitNewCardError,
     [FETCH_CARDS_REQUEST]: fetchCards,
     [FETCH_CARDS_SUCESS]: fetchCardsSuccess,
-    [FETCH_CARDS_ERROR]: fetchCardError
+    [FETCH_CARDS_ERROR]: fetchCardError,
+    [SELECT_CARD]: selectCard
 })
+
+const selectedCard = state => state.cards.selectedCard
+const cards = state => state.cards.byIds
+const gpItems = state => state.gpItems.byIds
+const gpSites = state => state.gpSites.byIds
+const sites  = state => state.hubSites.byIds
+
+
+export const cardDetails = createSelector(
+    [selectedCard,cards, gpItems, gpSites, sites],
+    (selectedCard,cards, gpItems, gpSites, sites) => {
+        debugger
+        const card = cards[selectedCard]
+        const gpItem = gpItems[card.gp_item_id]
+        const gpSite = gpSites[card.gp_location]
+        const site = sites[card.siteId]
+
+        return {
+            card,
+            gpItem,
+            gpSite,
+            site
+        }
+
+        
+    }
+)

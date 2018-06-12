@@ -1,4 +1,4 @@
-import {SUBMIT_NEW_CARD, SUBMIT_NEW_CARD_ERROR,SUBMIT_NEW_CARD_SUCCESS, FETCH_CARDS_ERROR,FETCH_CARDS_REQUEST,FETCH_CARDS_SUCESS} from './cardsConstants'
+import {SUBMIT_NEW_CARD, SUBMIT_NEW_CARD_ERROR,SUBMIT_NEW_CARD_SUCCESS, FETCH_CARDS_ERROR,FETCH_CARDS_REQUEST,FETCH_CARDS_SUCESS, SELECT_CARD} from './cardsConstants'
 import { submitNewCard, getCards } from './card-api'
 
 
@@ -72,6 +72,15 @@ export const fetchCardsRequest = (site) => {
         } catch (error) {
             console.log('fetching cards ', error)
             dispatch(fetchCardsError(error))
+        }
+    }
+}
+
+export const selectCard = (cardID) => {
+    return {
+        type: SELECT_CARD,
+        payload: {
+            cardID
         }
     }
 }

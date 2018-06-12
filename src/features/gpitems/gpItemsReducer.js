@@ -57,6 +57,7 @@ export default createReducer(initialState, {
 export const gpListing = state => state.gpItems.listing;
 export const gpItems = state => state.gpItems.byIds;
 export const selectorGPItemsLoading = state => state.gpItems.loading
+const checkedLoaded = state => state.gpItems.loaded
 
 export const getGPItemsSelector = createSelector(
   gpListing,
@@ -126,3 +127,7 @@ export const gpItemsTree = createSelector(gpItems, items => {
   return res;
 });
 
+export const selectedGPItemsLoaded = createSelector(
+  [checkedLoaded],
+  (checkedLoaded) => checkedLoaded
+)

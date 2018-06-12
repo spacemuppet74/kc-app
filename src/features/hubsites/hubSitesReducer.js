@@ -69,11 +69,11 @@ export default createReducer(initialState, {
 
 const selectorHubSite = (state) => state.hubSites.selectedSite
 
-const hubSitesLoading = state => state.hubSites.loading
+const hubSitesLoaded = state => state.hubSites.loaded
 
-export const selectorHubSitesLoading = createSelector(
-  [hubSitesLoading],
-  (getLoading) => getLoading
+export const selectorHubSitesLoaded = createSelector(
+  [hubSitesLoaded],
+  (getLoading) => hubSitesLoaded
 )
 
 export const selectorSelectedHubSite = createSelector(

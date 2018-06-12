@@ -20,7 +20,7 @@ const fetchGPSitesRequest = (state) => {
 
 const fetchGPSiteSuccess = (state, payload) => {
   const byIds = payload.sites.reduce((prev, next) => {
-    return { ...prev, [next.LOCNCODE]: next }
+    return { ...prev, [next.LOCNCODE.trim()]: next }
   }, {})
 
   const listing = Object.keys(byIds)
@@ -49,8 +49,14 @@ export default createReducer(initialState, {
 })
 
 const gpSites = state => state.gpSites.byIds
+const checkLoaded = state => state.gpSites.loaded
 
 export const selectGPSitesOptions = createSelector(
   gpSites,
   (gpSites) => Object.values(gpSites).filter(site => site.ADDRESS1.trim() !== "").map(site => ({ key: site.LOCNCODE.trim(), value: site.LOCNCODE.trim(), text: site.LOCNDSCR.trim() }))
+)
+
+export const selectorGPSitesLoaded = createSelector(
+  [checkLoaded],
+  (checkLoaded) => checkLoaded
 )
