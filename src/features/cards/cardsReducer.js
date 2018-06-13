@@ -98,22 +98,24 @@ const cards = state => state.cards.byIds
 const gpItems = state => state.gpItems.byIds
 const gpSites = state => state.gpSites.byIds
 const sites  = state => state.hubSites.byIds
+const stores = state => state.stores.byIds
 
 
 export const cardDetails = createSelector(
-    [selectedCard,cards, gpItems, gpSites, sites],
-    (selectedCard,cards, gpItems, gpSites, sites) => {
-        debugger
+    [selectedCard,cards, gpItems, gpSites, sites, stores],
+    (selectedCard,cards, gpItems, gpSites, sites, stores) => {
         const card = cards[selectedCard]
         const gpItem = gpItems[card.gp_item_id]
         const gpSite = gpSites[card.gp_location]
         const site = sites[card.siteId]
+        const store = stores[card.store_locationId]
 
         return {
             card,
             gpItem,
             gpSite,
-            site
+            site,
+            store
         }
 
         
